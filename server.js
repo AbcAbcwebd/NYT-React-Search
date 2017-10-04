@@ -1,4 +1,7 @@
 // Boilerplate code taken from in class demonstration 
+
+// NOTE: Development version will not run properly on Windows (because of how start script is written)
+
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
