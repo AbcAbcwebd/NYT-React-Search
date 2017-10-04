@@ -1,0 +1,29 @@
+{
+  "name": "nyt-react-search",
+  "version": "1.0.0",
+  "description": "Query and save New York Times articles",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbcAbcwebd/NYT-React-Search.git"
+  },
+  "author": "Owen Essen",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/AbcAbcwebd/NYT-React-Search/issues"
+  },
+  "homepage": "https://github.com/AbcAbcwebd/NYT-React-Search#readme",
+  "dependencies": {
+    "concurrently": "^3.5.0",
+    "express": "^4.16.1",
+    "nodemon": "^1.12.1",
+    "path": "^0.12.7"
+  }
+}
