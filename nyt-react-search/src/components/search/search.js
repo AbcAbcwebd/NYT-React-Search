@@ -33,7 +33,11 @@ class Search extends Component {
 //    this.searchMovies(this.state.search);
 	console.log("Form submitted")
 	console.log(this.state.topic);
-	this.props.setActiveSearch({topic: "test"});
+	this.props.setActiveSearch({
+		topic: this.state.topic,
+    	startYear: this.state.startYear,
+    	endYear: this.state.endYear
+	});
   };
 
   render() {

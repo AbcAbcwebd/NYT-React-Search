@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Siteheader from './components/header';
 import Search from './components/search';
+import Results from './components/results';
 
 class App extends Component {
    state = {
@@ -12,7 +13,7 @@ class App extends Component {
   setActiveSearch = searchObj => {
     console.log(searchObj)
     this.setState({
-      activeSearch: "Bob"
+      activeSearch: searchObj
     });
     console.log(this.state.activeSearch);
   };
@@ -23,6 +24,9 @@ class App extends Component {
 	    	<Siteheader />
 	    	<Search 
           setActiveSearch={this.setActiveSearch}
+        />
+        <Results 
+          activeSearch={this.state.activeSearch}
         />
     	</div>
     );
