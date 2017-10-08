@@ -7,6 +7,10 @@ const cheerio = require("cheerio");
 
 router.get("/scrape", function(req, res) {
 	console.log("Scrape route hit")
+
+  // Empty array to hold articles
+  let allArticles = [];
+
   // First, we grab the body of the html with request
   request("https://www.nytimes.com/section/technology?action=click&pgtype=Homepage&region=TopBar&module=HPMiniNav&contentCollection=Tech&WT.nav=page", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -24,7 +28,7 @@ router.get("/scrape", function(req, res) {
       result.byLine = $(this).children(".story-meta").children(".byline").text();
 
       console.log(result);
-
+/*
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       var entry = new Article(result);
@@ -40,11 +44,11 @@ router.get("/scrape", function(req, res) {
           console.log(doc);
         }
       }); 
-
+*/
     });
   });
   // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete");
+  res.json(allArticles);
 });
 
 router.get("/", function(req, res) {

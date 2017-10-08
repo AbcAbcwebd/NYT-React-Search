@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './results.css';
+import newsScrape from '../../utils/newsScrape.js';
 
 class Results extends Component {
   state = {
@@ -8,15 +9,14 @@ class Results extends Component {
 
    componentDidMount() {
 //    this.searchMovies("The Matrix");
-	console.log(this.props.activeSearch);
+//	console.log(this.props.activeSearch);
+//	newsScrape();
   }
-/*
-   searchMovies = query => {
-     API.search(query)
-       .then(res => this.setState({ result: res.data }))
-       .catch(err => console.log(err));
+
+   scrapeTimes = query => {
+     
    };
-*/
+
   render() {
     return (
       // JSX Here
