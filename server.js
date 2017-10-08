@@ -12,12 +12,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("nyt-react-search/build"));
 }
 
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./nyt-react-search/build/index.html"));
-});
-
+/*
 // Database configuration with mongoose
 mongoose.connect("mongodb://heroku_mftcp9cd:p080tnvhjjdcck6ulncce4uiis@ds149144.mlab.com:49144/heroku_mftcp9cd"); // mongodb://localhost/news-scraper-db
 const db = mongoose.connection;
@@ -31,10 +26,16 @@ db.on("error", function(error) {
 db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
-
+*/
 // ROUTES
 const routes = require("./routes/routes.js");
-app.use("/", routes);
+app.use("/api", routes);
+
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./nyt-react-search/build/index.html"));
+});
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

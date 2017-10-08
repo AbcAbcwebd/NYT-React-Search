@@ -10,10 +10,11 @@ class Results extends Component {
    componentDidMount() {
 //    this.searchMovies("The Matrix");
 //	console.log(this.props.activeSearch);
-//	newsScrape();
-  }
+//	console.log("Component mounted")
+	newsScrape.newsScrape();
+//  }
 
-   scrapeTimes = query => {
+//   scrapeTimes = query => {
      
    };
 

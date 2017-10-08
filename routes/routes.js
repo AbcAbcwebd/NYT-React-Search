@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Note = require("../models/Note.js");
-const Article = require("../models/Article.js");
+// const Note = require("../models/Note.js");
+// const Article = require("../models/Article.js");
 const request = require("request");
 const cheerio = require("cheerio");
 
@@ -16,10 +16,12 @@ router.get("/scrape", function(req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     console.log("HTML loaded");
+    const totalArticles =  $('.story-link').length;
+    let articleCounter = 0; 
     $(".story-link").each(function(i, element) {
 
       // Save an empty result object
-      var result = {};
+      let result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
       result.headline = $(this).children(".story-meta").children(".headline").text().split("                    ")[1];
@@ -28,6 +30,7 @@ router.get("/scrape", function(req, res) {
       result.byLine = $(this).children(".story-meta").children(".byline").text();
 
       console.log(result);
+      allArticles.push(result);
 /*
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
@@ -45,12 +48,20 @@ router.get("/scrape", function(req, res) {
         }
       }); 
 */
-    });
-  });
-  // Tell the browser that we finished scraping the text
-  res.json(allArticles);
+      // To determine if all articles have been added to the array
+      articleCounter++;
+      if (articleCounter >= totalArticles){
+        res.json(allArticles);
+      };
+    })     
+  })/*
+    .done(
+      console.log("Scrape completed")
+      res.json(allArticles)
+    )*/
+  
 });
-
+/*
 router.get("/", function(req, res) {
   Article.find({}, function(err, doc){
     res.render("home", {articles: doc});
@@ -129,5 +140,5 @@ router.delete("/articles/:id/", function(req, res) {
       res.status(200).send(response);
   });
 });
-
+*/
 module.exports = router;

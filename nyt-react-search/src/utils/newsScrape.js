@@ -1,3 +1,4 @@
+/*
 const request = require("request");
 const cheerio = require("cheerio");
 
@@ -27,5 +28,15 @@ const newsScrape = () => {
   });
 
 }
+*/ 
 
-export default newsScrape;
+import axios from "axios";
+const BASEURL = "/scrape";
+
+export default {
+  newsScrape: function(query) {
+    return axios.get(BASEURL);
+  }
+};
+
+// export default newsScrape;
