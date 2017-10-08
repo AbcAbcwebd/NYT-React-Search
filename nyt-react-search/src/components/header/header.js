@@ -2,10 +2,10 @@ import React from "react";
 import './header.css';
 
 const Siteheader = () => 
-  <div>
+  <header>
   	<h1>New York Times Article Scrubber</h1>
     <p>Search for and annotate articles of interest!</p>
-  </div>;
+  </header>;
 
 
 export default Siteheader;

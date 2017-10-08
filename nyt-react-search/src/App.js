@@ -5,11 +5,25 @@ import Siteheader from './components/header';
 import Search from './components/search';
 
 class App extends Component {
+   state = {
+   	 activeSearch: ""
+   }
+
+  setActiveSearch = searchObj => {
+    console.log(searchObj)
+    this.setState({
+      activeSearch: "Bob"
+    });
+    console.log(this.state.activeSearch);
+  };
+
   render() {
     return (
     	<div>
 	    	<Siteheader />
-	    	<Search />
+	    	<Search 
+          setActiveSearch={this.setActiveSearch}
+        />
     	</div>
     );
   }
