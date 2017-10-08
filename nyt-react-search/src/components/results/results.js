@@ -1,33 +1,49 @@
 import React, { Component } from "react";
 import './results.css';
-import newsScrape from '../../utils/newsScrape.js';
+//import newsScrape from '../../utils/newsScrape.js';
+import axios from "axios";
 
 class Results extends Component {
   state = {
-
+    articles: {headline: "No Articles Yet!"}
   };
 
-   componentDidMount() {
-//    this.searchMovies("The Matrix");
-//	console.log(this.props.activeSearch);
-//	console.log("Component mounted")
-	newsScrape.newsScrape();
-//  }
+  let formatedArticles = this.state.articles.map((d) => `<li key=${d}>${d}</li>` );
 
-//   scrapeTimes = query => {
-     
-   };
+  scrapeTimes = query => {
+      axios.get('api/scrape')
+      .then(function (response) {
+        console.log(response);
+        this.setState({
+          articles: response.data
+        })
+      })
+      .catch(function (error) {
+//        console.log(error);
+      });
+  };
+
+  componentDidMount() {
+//    this.searchMovies("The Matrix");
+//  console.log(this.props.activeSearch);
+//  console.log("Component mounted")
+//  let scrapeInfo = newsScrape.newsScrape();
+//  console.log(scrapeInfo)
+    this.scrapeTimes();
+  }
 
   render() {
     return (
-      // JSX Here
       <div id="results">
 	      <p>Results</p>
-	      <p>{this.props.activeSearch.topic}</p>
+        <ul>
+	      {formatedArticles }
+        </ul>
+        })}
       </div>
-    );
-  }
-}
+    )
+  };
+};
 
 
 export default Results;

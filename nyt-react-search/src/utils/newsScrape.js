@@ -30,13 +30,25 @@ const newsScrape = () => {
 }
 */ 
 
-import axios from "axios";
-const BASEURL = "/scrape";
+//import axios from "axios";
+//const BASEURL = "/scrape";
 
-export default {
+//export default {
   newsScrape: function(query) {
-    return axios.get(BASEURL);
+/*    console.log("About to get scrape info")
+    console.log( axios.get(BASEURL) );
+    return axios.get(BASEURL); */
+    let data;
+    axios.get('api/scrape')
+      .then(function (response) {
+//        console.log(response);
+        data = "Doug";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      return data;
   }
-};
+//};
 
 // export default newsScrape;
