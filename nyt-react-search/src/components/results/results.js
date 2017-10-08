@@ -8,7 +8,8 @@ class Results extends Component {
     articles: {headline: "No Articles Yet!"}
   };
 
-  let formatedArticles = this.state.articles.map((d) => `<li key=${d}>${d}</li>` );
+  //this.state.articles.map((d) => `<li key=${d}>${d}</li>` );
+  // blug = "Test";
 
   scrapeTimes = query => {
       axios.get('api/scrape')
@@ -24,11 +25,6 @@ class Results extends Component {
   };
 
   componentDidMount() {
-//    this.searchMovies("The Matrix");
-//  console.log(this.props.activeSearch);
-//  console.log("Component mounted")
-//  let scrapeInfo = newsScrape.newsScrape();
-//  console.log(scrapeInfo)
     this.scrapeTimes();
   }
 
@@ -36,10 +32,7 @@ class Results extends Component {
     return (
       <div id="results">
 	      <p>Results</p>
-        <ul>
-	      {formatedArticles }
-        </ul>
-        })}
+        <p>{this.state.articles.headline}</p>
       </div>
     )
   };
