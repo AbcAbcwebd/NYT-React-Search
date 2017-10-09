@@ -7,17 +7,6 @@ class Search extends Component {
     startYear: 1995,
     endYear: 2017
   };
-/*
-   componentDidMount() {
-    this.searchMovies("The Matrix");
-  }
-
-   searchMovies = query => {
-     API.search(query)
-       .then(res => this.setState({ result: res.data }))
-       .catch(err => console.log(err));
-   };
-*/
 
   handleInputChange = event => {
     const name = event.target.name;
@@ -30,7 +19,6 @@ class Search extends Component {
   // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-//    this.searchMovies(this.state.search);
 	console.log("Form submitted")
 	console.log(this.state.topic);
 	this.props.setActiveSearch({

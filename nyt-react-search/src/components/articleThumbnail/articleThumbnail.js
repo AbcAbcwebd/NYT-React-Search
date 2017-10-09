@@ -1,8 +1,6 @@
 import React from "react";
 import "./articleThumbnail.css";
 
-const testLink = "http://www.google.com"
-
 const ArticleThumbnail = props => (
   <div className="articleThumbnail">
     <a href={props.link} target="_blank">

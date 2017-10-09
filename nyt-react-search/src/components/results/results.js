@@ -9,14 +9,9 @@ class Results extends Component {
     articles: [{headline: "No Articles Yet!"}]
   };
 
-  //this.state.articles.map((d) => `<li key=${d}>${d}</li>` );
-  // blug = "Test";
-
   checkState = () => {
     console.log(this.state.articles);
   }
-
-//  this.checkState = this.checkState.bind(this);
 
   scrapeTimes = query => {
       const parentObj = this;
