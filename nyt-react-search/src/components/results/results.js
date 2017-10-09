@@ -19,12 +19,14 @@ class Results extends Component {
 //  this.checkState = this.checkState.bind(this);
 
   scrapeTimes = query => {
+      const parentObj = this;
       axios.get('api/scrape')
       .then(function (response) {
         console.log(response);
-        this.setState({
-          articles: ["response.data"]
-        }, this.checkState)
+        console.log(this)
+        parentObj.setState({
+          articles: response.data
+        })
       })
       .catch(function (error) {
         console.log(error);
@@ -46,7 +48,7 @@ class Results extends Component {
               byLine={item.byLine}
               summary={item.summary}
               link={item.link}
-              key={item.headline}
+              key={item.headline + Math.floor(Math.random() * 1000)}
             />
           ))
         }
