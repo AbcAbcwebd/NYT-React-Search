@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './results.css';
 //import newsScrape from '../../utils/newsScrape.js';
-// import axios from "axios";
+import axios from "axios";
 import ArticleThumbnail from '../articleThumbnail';
 
 class Results extends Component {
@@ -36,14 +36,14 @@ class Results extends Component {
       console.log("Topic: " + topic);
       console.log("Start year: " + startYear);
       console.log("End year: " + endYear);
-
+/*
     // Built by LucyBot. www.lucybot.com
-/*    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     url += '?' + $.param({
       'api-key': "3baa8cba285e47bbb0176e1e7702df66",
-      'q': "SEARCH TERM",
-      'begin_date': "19950112",
-      'end_date': "20171010"
+      'q': topic,
+      'begin_date': startYear + "0101",
+      'end_date': endYear + "1010"
     });
     $.ajax({
       url: url,
@@ -52,10 +52,24 @@ class Results extends Component {
       console.log(result);
     }).fail(function(err) {
       throw err;
-    });*/
+    });
+*/
+    const queryString = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=3baa8cba285e47bbb0176e1e7702df66&q=${topic}&begin_date=${startYear}0101&end_date=${endYear}1231`
+    const parentObj = this;
+
+    axios.get(queryString)
+      .then(function (response) {
+        console.log(response.data.response.docs);
+        parentObj.setState({
+          articles: response.data.response.docs
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.scrapeTimes();
   }
 
@@ -66,10 +80,10 @@ class Results extends Component {
         {
           this.state.articles.map(item => (
             <ArticleThumbnail
-              headline={item.headline}
-              byLine={item.byLine}
-              summary={item.summary}
-              link={item.link}
+              headline={item.headline.main}
+              byLine={item.byline.original}
+              summary={item.snippet}
+              link={item.web_url}
               key={item.headline + Math.floor(Math.random() * 1000)}
             />
           ))
