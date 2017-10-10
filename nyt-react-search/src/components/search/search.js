@@ -3,7 +3,9 @@ import './search.css';
 
 class Search extends Component {
   state = {
-
+    topic: "",
+    startYear: "",
+    endYear: ""
   };
 
   handleInputChange = event => {
