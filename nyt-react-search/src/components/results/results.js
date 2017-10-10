@@ -73,10 +73,7 @@ class Results extends Component {
     const clickedArticle = this.findArticle(clickedArticleID);
     console.log(clickedArticle);
 
-    axios.post('api/user', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
+    axios.post('api/articles', clickedArticle)
     .then(function (response) {
       console.log(response);
     })
