@@ -18,14 +18,28 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-	console.log("Form submitted")
+	console.log("Form submitted");
 	console.log(this.state.topic);
-	this.props.setActiveSearch({
+/*	this.props.setActiveSearch({
 		topic: this.state.topic,
     	startYear: this.state.startYear,
     	endYear: this.state.endYear
-	});
-	window.location = "/results?topic=" + this.state.topic + "&start_year=" + this.state.startYear + "&end_year=" + this.state.endYear;
+	});*/
+
+	// To ensure blank feilds don't break API call.
+	let searchTopic = this.state.topic;
+	let searchStartYear = this.state.startYear;
+	let searchEndYear = this.state.endYear;
+	if (!searchStartYear){
+		searchStartYear = 1900;
+	};
+	if (!searchEndYear){
+		searchEndYear = new Date().getFullYear();
+	};
+	if (!searchTopic){
+		searchTopic = "technology";
+	};
+	window.location = "/results?topic=" + searchTopic + "&start_year=" + searchStartYear + "&end_year=" + searchEndYear;
   };
 
   render() {
