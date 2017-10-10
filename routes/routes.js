@@ -11,35 +11,18 @@ router.get("/articles", function(req, res) {
 });
 
 router.post("/articles", function(req, res) {
-//  console.log(req.body)
-/*
-  var newArticle = new Article({
-    headline: req.body.headline.main,
-    link: req.body.web_url,
-    summary: req.body.snippet,
-    byLine: req.body.byline.original
-  });
-  // Save the new note to mongoose
-  newArticle.save(function(error, doc) {
-    // Send any errors to the browser
-    if (error) {
-      res.send(error);
-    }
-    // Otherwise
-    else {
-      res.send(doc);
-    }
-  });
-  */
-
   Article.create({
     headline: req.body.headline.main,
     link: req.body.web_url,
     summary: req.body.snippet,
     byLine: req.body.byline.original
   }, function (err, small) {
-    if (err) console.log(err);
-    // saved!
+    if (err) {
+      res.send(err)
+    } else {
+      // saved!
+      if (!err) res.sendStatus(200);
+    }; 
   })
 });
 
