@@ -1,7 +1,7 @@
 // Require mongoose
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 // Create Schema class
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Create article schema
 var ArticleSchema = new Schema({
@@ -22,11 +22,6 @@ var ArticleSchema = new Schema({
   byLine: {
     type: String
   },
-  // This only saves one note's ObjectId, ref refers to the Note model
-  notes: {
-    type: [Schema.Types.ObjectId],
-    ref: "Note"
-  }
 });
 
 // Create the Article model with the ArticleSchema

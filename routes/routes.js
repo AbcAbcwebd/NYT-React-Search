@@ -1,71 +1,14 @@
 const express = require("express");
 const router = express.Router();
 // const Note = require("../models/Note.js");
-// const Article = require("../models/Article.js");
+const Article = require("../models/Article.js");
 const request = require("request");
-const cheerio = require("cheerio");
+// const cheerio = require("cheerio");
 
-router.get("/scrape", function(req, res) {
-	console.log("Scrape route hit")
-
-  // Empty array to hold articles
-  let allArticles = [];
-
-  // First, we grab the body of the html with request
-  request("https://www.nytimes.com/section/technology?action=click&pgtype=Homepage&region=TopBar&module=HPMiniNav&contentCollection=Tech&WT.nav=page", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
-    console.log("HTML loaded");
-    const totalArticles =  $('.story-link').length;
-    let articleCounter = 0; 
-    $(".story-link").each(function(i, element) {
-
-      // Save an empty result object
-      let result = {};
-
-      // Add the text and href of every link, and save them as properties of the result object
-      result.headline = $(this).children(".story-meta").children(".headline").text().split("                    ")[1];
-      result.link = $(this).attr("href");
-      result.summary = $(this).children(".story-meta").children(".summary").text();
-      result.byLine = $(this).children(".story-meta").children(".byline").text();
-
-      console.log(result);
-      allArticles.push(result);
-/*
-      // Using our Article model, create a new entry
-      // This effectively passes the result object to the entry (and the title and link)
-      var entry = new Article(result);
-
-      // Now, save that entry to the db
-      entry.save(function(err, doc) {
-        // Log any errors
-        if (err) {
-          console.log(err);
-        }
-        // Or log the doc
-        else {
-          console.log(doc);
-        }
-      }); 
-*/
-      // To determine if all articles have been added to the array
-      articleCounter++;
-      if (articleCounter >= totalArticles){
-        res.json(allArticles);
-      };
-    })     
-  })/*
-    .done(
-      console.log("Scrape completed")
-      res.json(allArticles)
-    )*/
-  
-});
-/*
-router.get("/", function(req, res) {
-  Article.find({}, function(err, doc){
-    res.render("home", {articles: doc});
-  });
+// Saves an article to the database
+router.get("/articles", function(req, res) {
+  console.log("Route hit")
+  res.json({message: "Route hit"})
 });
 
 // Saves a note given the corresponding articles ID
@@ -140,5 +83,5 @@ router.delete("/articles/:id/", function(req, res) {
       res.status(200).send(response);
   });
 });
-*/
+
 module.exports = router;
