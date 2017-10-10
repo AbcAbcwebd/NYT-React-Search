@@ -25,6 +25,8 @@ class Search extends Component {
     	startYear: this.state.startYear,
     	endYear: this.state.endYear
 	});
+//	this.context.history.push('/results')
+	window.location = "/results?topic=" + this.state.topic + "&start_year=" + this.state.startYear + "&end_year=" + this.state.endYear;
   };
 
   render() {
