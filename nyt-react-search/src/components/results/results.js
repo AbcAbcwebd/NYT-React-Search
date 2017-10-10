@@ -27,7 +27,15 @@ class Results extends Component {
         console.log(error);
       });*/
 
-      console.log(this.props.activeSearch)
+      console.log(this.props.location)
+      const queryURL = this.props.location.search;
+      const topic = queryURL.split("topic=")[1].split("&start")[0];
+      const startYear = queryURL.split("start_year=")[1].split("&end")[0];
+      const endYear = queryURL.split("end_year=")[1];
+
+      console.log("Topic: " + topic);
+      console.log("Start year: " + startYear);
+      console.log("End year: " + endYear);
 
     // Built by LucyBot. www.lucybot.com
 /*    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
