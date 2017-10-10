@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './results.css';
 //import newsScrape from '../../utils/newsScrape.js';
-import axios from "axios";
+// import axios from "axios";
 import ArticleThumbnail from '../articleThumbnail';
 
 class Results extends Component {

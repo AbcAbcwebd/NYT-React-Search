@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Siteheader from './components/header';
 import Search from './components/search';
-import Results from './components/results';
 import Main from './components/main';
 
 class App extends Component {
