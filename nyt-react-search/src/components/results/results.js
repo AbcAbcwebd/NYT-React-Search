@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './results.css';
-//import newsScrape from '../../utils/newsScrape.js';
 import axios from "axios";
 import ArticleThumbnail from '../articleThumbnail';
 
@@ -14,19 +13,6 @@ class Results extends Component {
   }
 
   scrapeTimes = () => {
-/*      const parentObj = this;
-      axios.get('api/scrape')
-      .then(function (response) {
-        console.log(response);
-        console.log(this)
-        parentObj.setState({
-          articles: response.data
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      });*/
-
       console.log(this.props.location)
       const queryURL = this.props.location.search;
       const topic = queryURL.split("topic=")[1].split("&start")[0];
@@ -36,24 +22,7 @@ class Results extends Component {
       console.log("Topic: " + topic);
       console.log("Start year: " + startYear);
       console.log("End year: " + endYear);
-/*
-    // Built by LucyBot. www.lucybot.com
-    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    url += '?' + $.param({
-      'api-key': "3baa8cba285e47bbb0176e1e7702df66",
-      'q': topic,
-      'begin_date': startYear + "0101",
-      'end_date': endYear + "1010"
-    });
-    $.ajax({
-      url: url,
-      method: 'GET',
-    }).done(function(result) {
-      console.log(result);
-    }).fail(function(err) {
-      throw err;
-    });
-*/
+
     const queryString = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=3baa8cba285e47bbb0176e1e7702df66&q=${topic}&begin_date=${startYear}0101&end_date=${endYear}1231`
     const parentObj = this;
 
