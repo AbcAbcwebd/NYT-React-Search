@@ -16,7 +16,6 @@ class Search extends Component {
     });
   };
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
 	console.log("Form submitted")
