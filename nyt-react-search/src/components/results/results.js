@@ -5,7 +5,16 @@ import ArticleThumbnail from '../articleThumbnail';
 
 class Results extends Component {
   state = {
-    articles: [{headline: "No Articles Yet!"}]
+    articles: [
+      {
+        headline: 
+          {main: "No Articles Yet!"}, 
+        byline: 
+          {original: "Please search for something."},
+        snippet: "Or wait for the page to load",
+        web_url: "/"
+      }
+    ]
   };
 
   checkState = () => {
@@ -53,7 +62,7 @@ class Results extends Component {
               byLine={item.byline.original}
               summary={item.snippet}
               link={item.web_url}
-              key={item.headline + Math.floor(Math.random() * 1000)}
+              key={item.headline.main + Math.floor(Math.random() * 1000)}
             />
           ))
         }
