@@ -3,6 +3,7 @@ import './App.css';
 import Siteheader from './components/header';
 import Search from './components/search';
 import Results from './components/results';
+import Main from './components/main';
 
 class App extends Component {
    state = {
@@ -24,9 +25,7 @@ class App extends Component {
 	    	<Search 
           setActiveSearch={this.setActiveSearch}
         />
-        <Results 
-          activeSearch={this.state.activeSearch}
-        />
+        <Main />
     	</div>
     );
   }
