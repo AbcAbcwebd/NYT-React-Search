@@ -38,6 +38,13 @@ class Results extends Component {
     axios.get(queryString)
       .then(function (response) {
         console.log(response.data.response.docs);
+
+        // To add unique identifyer 
+        // 4 random digits are tacked on end in case an article is retrieved more than once.
+        for (let i = 0; i < response.data.response.docs.length; i++){
+          response.data.response.docs[i].id = response.data.response.docs[i]._id + "%" + Math.floor(Math.random() * 1000);
+//          console.log(response.data.response.docs[i].id);
+        };
         parentObj.setState({
           articles: response.data.response.docs
         })
@@ -51,6 +58,33 @@ class Results extends Component {
     this.scrapeTimes();
   }
 
+  findArticle = (matchID) => {
+    for (let x = 0; x < this.state.articles.length; x++){
+      if (this.state.articles[x].id === matchID){
+        return this.state.articles[x];
+      }
+    };
+  }
+
+  saveArticle = (event) => {
+    console.log("Save function executed");
+    const clickedArticleID = event.currentTarget.getAttribute('data-article-id');
+    console.log(clickedArticleID);
+    const clickedArticle = this.findArticle(clickedArticleID);
+    console.log(clickedArticle);
+
+    axios.post('api/user', {
+      firstName: 'Fred',
+      lastName: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div id="results">
@@ -62,7 +96,9 @@ class Results extends Component {
               byLine={item.byline.original}
               summary={item.snippet}
               link={item.web_url}
-              key={item.headline.main + Math.floor(Math.random() * 1000)}
+              key={item.id + "#" + Math.floor(Math.random() * 1000)}
+              saveArticle={this.saveArticle}
+              id={item.id}
             />
           ))
         }

@@ -20,11 +20,6 @@ class Search extends Component {
     event.preventDefault();
 	console.log("Form submitted");
 	console.log(this.state.topic);
-/*	this.props.setActiveSearch({
-		topic: this.state.topic,
-    	startYear: this.state.startYear,
-    	endYear: this.state.endYear
-	});*/
 
 	// To ensure blank feilds don't break API call.
 	let searchTopic = this.state.topic;

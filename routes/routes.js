@@ -11,6 +11,11 @@ router.get("/articles", function(req, res) {
   res.json({message: "Route hit"})
 });
 
+router.post("/user", function(req, res) {
+  console.log(req.body)
+  res.status(200).send();
+});
+
 // Saves a note given the corresponding articles ID
 router.post("/articles/:id", function(req, res) {
   // Use our Note model to make a new note from the req.body

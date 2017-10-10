@@ -7,8 +7,8 @@ const ArticleThumbnail = props => (
       <h3>{props.headline}</h3>
       <p className="byLine">{props.byLine}</p>
       <p>{props.summary}</p>
-      <button>Save</button>
     </a>
+    <button data-article-id={props.id} onClick={props.saveArticle}>Save</button>
   </div>
 );
 
