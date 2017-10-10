@@ -35,7 +35,7 @@ class Results extends Component {
   render() {
     return (
       <div id="results">
-	      <p>Results</p>
+	      <h2>Results</h2>
         {
           this.state.articles.map(item => (
             <ArticleThumbnail
@@ -47,8 +47,6 @@ class Results extends Component {
             />
           ))
         }
-        <button onClick={this.checkState}>Check State</button>
-        <button onClick={this.scrapeTimes}>Update Scrape</button>
       </div>
     )
   };
