@@ -7,7 +7,7 @@ import { subscribeToTimer } from './api';
 class App extends Component {
    state = {
    	 activeSearch: "",
-     timestamp: 'no timestamp yet'
+     timestamp: 'here is a timestamp'
    }
 
   setActiveSearch = searchObj => {
@@ -36,6 +36,7 @@ class App extends Component {
         <p className="App-intro">
           This is the timer value: {this.state.timestamp}
         </p>
+        <button onClick={subscribeToTimer("test")}>Click Me</button>
     	</div>
     );
   }
