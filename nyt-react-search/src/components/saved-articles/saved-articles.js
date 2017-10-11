@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import './saved-articles.css';
 import axios from "axios";
+import SavedThumbnail from '../savedThumbnail';
 
 class SavedArticles extends Component {
   state = {
     articles: [
       {
-        headline: 
-          {main: "No Articles Yet!"}, 
-        byline: 
-          {original: "Please search for something."},
-        snippet: "Or wait for the page to load",
-        web_url: "/"
+        headline: "No Articles Yet!", 
+        byLine: "Please search for something.",
+        summary: "Or wait for the page to load",
+        link: "/"
       }
     ]
   };
@@ -20,7 +19,7 @@ class SavedArticles extends Component {
     const parentObj = this;
     axios.get('/api/articles')
       .then(function (response) {
-        console.log(response);
+        console.log(response.data);
         parentObj.setState({
           articles: response.data
         })
@@ -37,7 +36,19 @@ class SavedArticles extends Component {
   render() {
     return (
       <div id="results">
-	      <p>Saved Articles Display</p>
+	      <h2>Saved Articles</h2>
+        {
+          this.state.articles.map(item => (
+            <SavedThumbnail
+              headline={item.headline}
+              byLine={item.byLine}
+              summary={item.summary}
+              link={item.link}
+              key={item._id + "#" + Math.floor(Math.random() * 1000)}
+              id={item._id}
+            />
+          ))
+        }
       </div>
     )
   };

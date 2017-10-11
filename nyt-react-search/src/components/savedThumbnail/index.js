@@ -1,1 +1,1 @@
-export { default } from "./savedThumbnails";
+export { default } from "./savedThumbnail";

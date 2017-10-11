@@ -1,0 +1,32 @@
+.articleThumbnail {
+	max-width: 90%;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	background: #cecccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+}
+
+.articleThumbnail h3 {
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+.articleThumbnail p {
+	color: black;
+}
+
+.byLine {
+	font-style: italic;
+	font-size: 15px;
+	margin-bottom: 5px;
+}
