@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+// var http = require('http').Server(app);
+const io = require('socket.io')();
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -43,6 +45,17 @@ app.use("/api", routes);
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./nyt-react-search/build/index.html"));
 });
+
+io.on('connection', (client) => {
+  client.on('subscribeToTimer', (interval) => {
+    console.log('client is subscribing to timer with interval ', interval);
+    setInterval(() => {
+      client.emit('timer', new Date());
+    }, interval);
+  });
+});
+
+io.listen(PORT);
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
