@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Siteheader from './components/header';
 import Search from './components/search';
 import Main from './components/main';

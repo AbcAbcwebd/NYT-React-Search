@@ -1,6 +1,5 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-//import Search from '../search'
 import Results from '../results'
 import SavedArticles from '../saved-articles'
 
