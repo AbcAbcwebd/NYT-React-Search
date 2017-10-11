@@ -21,7 +21,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/react-scraper-db"); // mongodb://heroku_mftcp9cd:p080tnvhjjdcck6ulncce4uiis@ds149144.mlab.com:49144/heroku_mftcp9cd
+mongoose.connect("mongodb://db_user_987:db_password_987@ds117605.mlab.com:17605/heroku_j3b6vqhx"); // mongodb://localhost/react-scraper-db
 const db = mongoose.connection;
 
 // Show any mongoose errors
