@@ -41,7 +41,9 @@ app.use("/api", routes);
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "nyt-react-search/build/Findex.html"));
+//  res.sendFile(path.join(__dirname, "nyt-react-search/build/index.html"));
+	const index = path.join(__dirname, 'nyt-react-search', 'build', 'index.html');
+  	res.sendFile(index);
 });
 
 app.listen(PORT, function() {
