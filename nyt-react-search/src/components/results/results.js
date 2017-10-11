@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './results.css';
 import axios from "axios";
 import ArticleThumbnail from '../articleThumbnail';
+import BigBtn from '../bigBtn';
 
 class Results extends Component {
   state = {
@@ -84,23 +85,32 @@ class Results extends Component {
     event.currentTarget.style.display = "none";
   }
 
+  redirect = () => {
+    window.location = "/saved_articles";
+  }
+
   render() {
     return (
-      <div id="results">
-	      <h2>Results</h2>
-        {
-          this.state.articles.map(item => (
-            <ArticleThumbnail
-              headline={item.headline.main}
-              byLine={item.byline.original}
-              summary={item.snippet}
-              link={item.web_url}
-              key={item.id + "#" + Math.floor(Math.random() * 1000)}
-              saveArticle={this.saveArticle}
-              id={item.id}
-            />
-          ))
-        }
+      <div>
+        <BigBtn 
+          redirect={this.redirect}
+        />
+        <div id="results">
+  	      <h2>Results</h2>
+          {
+            this.state.articles.map(item => (
+              <ArticleThumbnail
+                headline={item.headline.main}
+                byLine={item.byline.original}
+                summary={item.snippet}
+                link={item.web_url}
+                key={item.id + "#" + Math.floor(Math.random() * 1000)}
+                saveArticle={this.saveArticle}
+                id={item.id}
+              />
+            ))
+          }
+        </div>
       </div>
     )
   };
