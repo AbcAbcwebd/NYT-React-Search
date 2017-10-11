@@ -4,20 +4,26 @@ import axios from "axios";
 
 class SavedArticles extends Component {
   state = {
-
+    articles: [
+      {
+        headline: 
+          {main: "No Articles Yet!"}, 
+        byline: 
+          {original: "Please search for something."},
+        snippet: "Or wait for the page to load",
+        web_url: "/"
+      }
+    ]
   };
 
-  findArticles = () => {
-    console.log("Find articles function running")
-    return fetch(`/api/articles`, {
-      accept: 'application/json',
-    }).then(res => console.log(res))
-  }
-
   retrieveArticles = () => {
+    const parentObj = this;
     axios.get('/api/articles')
       .then(function (response) {
         console.log(response);
+        parentObj.setState({
+          articles: response.data
+        })
       })
       .catch(function (error) {
         console.log(error);
@@ -25,7 +31,6 @@ class SavedArticles extends Component {
   }
 
   componentWillMount() {
-    this.findArticles();
     this.retrieveArticles();
   }
 

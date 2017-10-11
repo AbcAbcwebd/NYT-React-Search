@@ -80,6 +80,8 @@ class Results extends Component {
     .catch(function (error) {
       console.log(error);
     });
+
+    event.currentTarget.style.display = "none";
   }
 
   render() {
