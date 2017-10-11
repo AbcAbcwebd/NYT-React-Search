@@ -10,9 +10,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
+/*if (process.env.NODE_ENV === "production") {
   app.use(express.static("nyt-react-search/build"));
-}
+}*/
 
 // Use body parser
 app.use(bodyParser.json());
