@@ -6,8 +6,9 @@ const request = require("request");
 
 // Saves an article to the database
 router.get("/articles", function(req, res) {
-  console.log("Route hit")
-  res.json({message: "Route hit"})
+  Article.find({}, function(err, doc){
+    res.json(doc);
+  });
 });
 
 router.post("/articles", function(req, res) {
